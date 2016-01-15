@@ -1,0 +1,9 @@
+language: r
+sudo: required
+github_packages:
+  - richfitz/storr
+
+# Need to work out how to background this correctly, and wait a couple
+# of seconds for it to come up.
+on_install:
+  - ./tests/testthat/storr_server &
