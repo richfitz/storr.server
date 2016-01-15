@@ -172,7 +172,7 @@ storr_server_endpoint_exists <- function(st, dat) {
     if (np == 2L) {
       storr_server_http_response(st$exists(path[[2]], path[[1]]))
     } else if (np == 1L) {
-      storr_server_http_response(st$exists_hash(path[[1]]))
+      storr_server_http_response(st$exists_object(path[[1]]))
     } else {
       storr_server_http_error()
     }
@@ -228,8 +228,7 @@ storr_server_endpoint_driver_hash <- function(st, dat) {
     dr$set_hash(key, namespace, dat$data)
     storr_server_http_response(NULL)
   } else if (dat$verb == "DELETE") {
-    ## TODO: in storr, del_key -> del_hash
-    storr_server_http_response(dr$del_key(key, namespace))
+    storr_server_http_response(dr$del_hash(key, namespace))
   } else {
     storr_server_http_error()
   }
@@ -251,7 +250,7 @@ storr_server_endpoint_driver_object <- function(st, dat) {
     storr_server_http_response(NULL)
   } else if (dat$verb == "DELETE") {
     ## TODO: in storr, del_hash -> del_object
-    storr_server_http_response(dr$del_hash(hash))
+    storr_server_http_response(dr$del_object(hash))
   }
 }
 
@@ -261,9 +260,9 @@ storr_server_endpoint_driver_exists <- function(st, dat) {
   np <- length(path)
   if (dat$verb == "GET") {
     if (np == 2L) {
-      storr_server_http_response(dr$exists_key(path[[2]], path[[1]]))
+      storr_server_http_response(dr$exists_hash(path[[2]], path[[1]]))
     } else if (np == 1L) {
-      storr_server_http_response(dr$exists_hash(path[[1]]))
+      storr_server_http_response(dr$exists_object(path[[1]]))
     } else {
       storr_server_http_error()
     }

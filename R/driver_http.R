@@ -63,20 +63,20 @@ driver_http <- function(host="localhost", port=8888, mangle_key=FALSE) {
                           empty=NULL)
     },
 
-    exists_key=function(key, namespace) {
+    exists_hash=function(key, namespace) {
       storr_client_method(self$base_url, "driver/exists",
                           self$name_key(key, namespace))
     },
-    exists_hash=function(hash) {
+    exists_object=function(hash) {
       storr_client_method(self$base_url, "driver/exists", hash)
     },
 
-    del_key=function(key, namespace) {
+    del_hash=function(key, namespace) {
       storr_client_method(self$base_url, "driver/hash",
                           self$name_key(key, namespace),
                           method=httr::DELETE)
     },
-    del_hash=function(hash) {
+    del_object=function(hash) {
       storr_client_method(self$base_url, "driver/object", hash,
                           method=httr::DELETE)
     },
