@@ -1,5 +1,4 @@
 #!/usr/bin/env Rscript
-## What restart should take here is a function to do the restart;
-##   options(storr.server.admin.restart=function() storr::driver_environment())
+devtools::load_all()
 options(storr.server.admin.restart=storr::driver_environment)
 storr.server::storr_server(storr::storr_environment())
