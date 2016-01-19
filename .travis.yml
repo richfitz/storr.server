@@ -9,7 +9,7 @@ before_install:
 
 install:
   - ./travis-tool.sh install_deps
-  - ./travis-tool.sh github_install richfitz/storr
+  - ./travis-tool.sh github_package richfitz/storr
   - ./tests/testthat/storr_server &
 
 script: ./travis-tool.sh run_tests
